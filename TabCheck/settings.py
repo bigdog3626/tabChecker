@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tabChecker',
     'phonenumber_field',
+    'import-export',
 
 ]
 
