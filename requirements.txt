@@ -27,4 +27,5 @@ sqlparse==0.4.2
 django-jet-reboot
 pandas
 openpyxl
-django-import-export==2.5.0
+django-import-export
+tablib

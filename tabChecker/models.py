@@ -111,25 +111,28 @@ class Attendees(models.Model):
         return f'upload/{self.file}'
 
 
-class Members(models.Model):
-    first_name = models.CharField(max_length=20)
-    last_name = models.CharField(max_length=20)
-    phone = PhoneNumberField(unique=True)
-    email = models.EmailField(unique=True)
-
-    def __str__(self):
-        return f'{self.first_name} {self.last_name}'
-
-
 class Organizer(User):
-
     pass
 
 
 class Organization(models.Model):
-    OrganizationName = models.CharField(max_length=50)
-    Organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE, null=True, )
-    members = models.ManyToManyField(Members)
+    name = models.CharField(max_length=50)
+    organizer = models.ForeignKey(Organizer, on_delete=models.CASCADE, null=True, )
+
+    def __str__(self):
+        return self.name
+
+
+class Members(models.Model):
+    first_name = models.CharField('First Name', max_length=20)
+    last_name = models.CharField(max_length=20)
+    organization = models.ForeignKey(Organization, on_delete=models.CASCADE, blank=True, null=True)
+    phone = PhoneNumberField(unique=True)
+    email = models.EmailField()
+    imported = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
 
 
 class event(models.Model):
@@ -142,6 +145,6 @@ class event(models.Model):
 
 
 class MemberSheetUpload(models.Model):
-    description = models.CharField(max_length=200, null = True)
-    document = models.FileField(upload_to='upload/',)
+    description = models.CharField(max_length=200, null=True)
+    document = models.FileField(upload_to='upload/', )
     uploaded_at = models.DateField(auto_now_add=True)

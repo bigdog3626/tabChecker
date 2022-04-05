@@ -1,8 +1,9 @@
 from django import forms
 from django.forms import ModelForm
 from .models import *
-from .helpers import AttendeeData
+
 from django.utils.translation import gettext_lazy as _
+from import_export.forms import ImportForm, ConfirmImportForm
 
 
 class EventForm(ModelForm):
@@ -14,5 +15,19 @@ class EventForm(ModelForm):
 class MemberSheetUploadForm(forms.ModelForm):
     class Meta:
         model = MemberSheetUpload
-        fields = ('description', 'document', )
+        fields = ('description', 'document',)
+
+
+class CustomImportForm(ImportForm):
+    organization = forms.ModelChoiceField(
+        queryset=Organization.objects.all(),
+        required=True)
+
+
+class CustomConfirmImportForm(ConfirmImportForm):
+
+    organization = forms.ModelChoiceField(
+        queryset=Organization.objects.all(),
+        required=True)
+
 
