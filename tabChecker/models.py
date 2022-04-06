@@ -36,23 +36,6 @@ class CustomUserManager(BaseUserManager):
         user.save()
         return user
 
-    def create_customer(self, email, first_name, last_name, phone_number, password, wants_promo, address):
-        if not email:
-            raise ValueError('Users must have an email address')
-        customer = self.model(
-            email=self.normalize_email(email),
-            first_name=first_name,
-            last_name=last_name,
-            phone_number=phone_number,
-            wants_promo=wants_promo,
-            address=address
-            # payment_info = payment_info
-        )
-        customer.is_active = False
-        customer.set_password(password)
-        customer.save()
-        print(customer.is_active)
-        return customer
 
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -104,13 +87,6 @@ class Manager(User):
     location = models.ForeignKey(bar, on_delete=models.CASCADE)
 
 
-class Attendees(models.Model):
-    file = models.FileField(upload_to='upload/')
-
-    def __str__(self):
-        return f'upload/{self.file}'
-
-
 class Organizer(User):
     pass
 
@@ -139,6 +115,7 @@ class event(models.Model):
     title = models.CharField(max_length=50)
     AttendingOrgs = models.ManyToManyField(Organization)
     location = models.ForeignKey(bar, on_delete=models.CASCADE)
+    status = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.title} at {self.location}'

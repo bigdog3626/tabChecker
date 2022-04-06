@@ -30,4 +30,3 @@ class CustomConfirmImportForm(ConfirmImportForm):
         queryset=Organization.objects.all(),
         required=True)
 
-

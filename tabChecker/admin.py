@@ -34,6 +34,7 @@ class UserAdminConfig(UserAdmin):
                     'is_active', 'is_staff')
     ordering = ('email',)
 
+
 def getOrgIds(qs):
     orgIds = []
     for i in range(len(qs)):
@@ -41,6 +42,7 @@ def getOrgIds(qs):
         orgIds.append(z)
 
     return orgIds
+
 
 def getOrgMembersById(orgIds):
     qs = []
@@ -50,17 +52,21 @@ def getOrgMembersById(orgIds):
         for f in range(len(filtered)):
             qs.append(filtered[f].id)
 
-        print(filtered)
-    print(qs)
     return qs
 
-def getEmailByMemberIDs(memIds):
-    emails = []
-    for i in range(len(memIds)):
-        emails.append(Members.objects.get(pk=memIds[i]).email)
 
+def getEmailNumberByMemberIDs(memIds):
+    emails = {}
+    for i in range(len(memIds)):
+        emails[i] = list(
+            Members.objects.filter(pk=memIds[i]).values_list('id', 'first_name', 'last_name', 'email', 'phone')[0])
+    for z in range(len(emails)):
+        emails[z][4] += getCarrierEXT(emails[z][4][2:])
+
+    print('\n')
     print(emails)
     return emails
+
 
 def getPhonesByMemberIDs(memIds):
     nums = []
@@ -99,7 +105,6 @@ def getAttendeesPhonesAsEmails(queryset):
         numbers.append(qs[i].get('phone')[2:])
 
     for i in range(len(numbers)):
-        print(numbers[i])
         ext = getCarrierEXT(numbers[i])
 
         numbers[i] = numbers[i] + ext
@@ -108,7 +113,6 @@ def getAttendeesPhonesAsEmails(queryset):
 
 
 def getAttendeeName(queryset):
-    print(queryset.get().attendees)
     fN = queryset.get().attendees.first_name
     lN = queryset.get().attendees.last_name
 
@@ -123,41 +127,49 @@ def generateAndPushQR(self, request, queryset):
     memIds = getOrgMembersById(orgIds)
 
     QRimg = QRmaker(queryset)
-    MemberEmails = getEmailByMemberIDs(memIds)
-    print(MemberEmails)
+    MemberEmails = getEmailNumberByMemberIDs(memIds)
 
     def getOrgs():
-        t = f'{Organization.objects.get(pk=orgIds[0])} and '
-        for org in range(len(orgIds) - 1):
-            t += f'{Organization.objects.get(pk=orgIds[org+1])}'
-        return t
+        temp = ''
+        print(orgIds)
+        for org in orgIds:
+            if org == orgIds[-1]:
+                temp += f'{Organization.objects.get(pk=org)}'
+            else:
+                temp += f'{Organization.objects.get(pk=org)} and '
 
     eventTitle = f' {getOrgs()} {queryset.get().title} at {queryset.get().location.name}'
+    print(eventTitle)
+    print('\n\n\n\n\n')
     print(MemberEmails)
-    #print(AttendeesPhoneEmails)
+    print('\n\n\n\n\n')
+    # print(AttendeesPhoneEmails)
     repList = MemberEmails
+    print('\n\n\n\n\n')
+    print(repList)
+    print('\n\n\n\n\n')
     barName = queryset.get().location.name
+    subject = f'Here are your tickets for the {eventTitle}'
 
     QRimg.save(f'{barName}_QR.png')
+
+    def EmailBody(key):
+        return f'Thank you again {Members.objects.get(pk = repList[key][0])} for your purchase please present \n' \
+               'the attached qr code to the employees at the entrance'
+
     for i in range(len(repList)):
         email = EmailMessage(
-            f'Here are your tickets for the {eventTitle}',
-            f'Thank you again {Members.objects.filter(email=repList[i]).get()} for your purchase please present '
-            'the attached qr code to the employees at the entrance',
-            to=[repList[i]],
+            subject,
+            EmailBody(i),
+            bcc=[repList[i][3], repList[i][4][2:]],
             reply_to=['DEFAULT_FROM_EMAIL']
         )
 
         email.attach_file(f'{barName}_QR.png')
 
         print(email)
-        if email.send():
-            print('sent')
 
-
-
-
-
+        print('sent')
 
 
 class BarAdmin(admin.ModelAdmin):
