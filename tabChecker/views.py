@@ -1,18 +1,21 @@
-from django.shortcuts import render, redirect
 from .models import *
 from PIL import Image
 import qrcode
 from django.forms import formset_factory
-from django.shortcuts import render
 from .forms import EventForm, MemberSheetUploadForm
-from django.http import HttpResponseRedirect
+import qrcode
+from PIL import Image
+from django.forms import formset_factory
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate  # add this
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm  # add this
+
+from .forms import EventForm, MemberSheetUploadForm
+from .models import *
+
 
 # Create your views here.
-
-from django.utils import timezone
-from django.views.generic.list import ListView
-
-from .models import event
 
 
 def QRmaker(queryset):
@@ -72,3 +75,28 @@ def model_form_upload(request):
 def home(request):
     documents = model_form_upload.objects.all()
     return render(request, 'tabChecker/home.html', {'documents': documents})
+
+
+
+
+def register_request(request):
+    pass
+
+
+def login_request(request):
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                return redirect("main:homepage")
+            else:
+                messages.error(request, "Invalid username or password.")
+        else:
+            messages.error(request, "Invalid username or password.")
+    form = AuthenticationForm()
+    return render(request=request, template_name="tabChecker/login.html", context={"login_form": form})

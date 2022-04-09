@@ -1,0 +1,152 @@
+{% comment %}{% load cart_template_tags %}{% endcomment %}{% load admin_urls %}
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-darkest scrolling-navbar">
+    <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="/tabChecker/home">
+            <strong class="primary-text">tabChecker</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect text-white in-theaters" href="/tabChecker/home">In Theaters
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect text-white coming-soon" href="{% url 'tabChecker:coming' %}">Coming Soon
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+                {% if user.is_authenticated and not user.is_staff%}
+                <li class="nav-item dropdown">
+                    <a class="nav-link waves-effect dropdown-toggle" id="navbarDropdown" role="button"
+                       data-toggle="dropdown">
+                        <span class="clearfix d-none d-sm-inline-block"> Profile </span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #3b3f46">
+                        <a class="dropdown-item">View Orders </a>
+                        <div class="dropdown-divider" style="border-top: 1px solid #1E2328;"></div>
+                        <a class="dropdown-item" href="{% url 'tabChecker:editprofile' %}">Edit Profile</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'tabChecker:logout' %}">
+                        <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+                    </a>
+                </li>
+                {% elif user.is_authenticated and user.is_staff %}
+                <!--Admin Options drop down --->
+                <li class="nav-item dropdown">
+                    <a class="nav-link waves-effect dropdown-toggle" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-expanded="false">
+                        <span class="clearfix d-none d-sm-inline-block"> Admin </span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+                        style="background-color: #3b3f46">
+                        <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Portal</a></li>
+                        <li>
+                            <div class="dropdown-divider" style="border-top: 1px solid #1E2328;"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Movies &raquo;</a>
+                            <ul class="dropdown-menu dropdown-submenu" style="background-color: #3b3f46; right: auto;left: -100%;">
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_movie_changelist' %}">View
+                                    Movies</a></li>
+                                <li>
+                                    <div class="dropdown-divider" style="border-top: 1px solid #1E2328;"></div>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_movie_add' %}">Add Movies</a>
+                                </li>
+
+                                <li>
+
+                                    {% if not request.get_full_path == "/tabChecker/home/" %}
+                                    {% if object.id != NULL %}
+                                    <a class="dropdown-item" href="{% url 'admin:tabChecker_movie_change' movie.id %}">Edit {{object.title}}</a>
+                                    {% endif %}
+                                    {% endif %}
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#">Promotions &raquo;</a>
+                            <ul class="dropdown-menu dropdown-submenu" style="background-color: #3b3f46; right: auto;left: -100%;">
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_promotion_changelist' %}">View
+                                    Promotions </a></li>
+                                <li>
+                                    <div class="dropdown-divider" style="border-top: 1px solid #1E2328;"></div>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_promotion_add' %}">Add
+                                    Promotion</a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="#">Users &raquo;</a>
+                            <ul class="dropdown-menu dropdown-submenu" style="background-color: #3b3f46; right: auto;left: -100%;">
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_customer_changelist' %}">View
+                                    Users</a></li>
+                                <li>
+                                    <div class="dropdown-divider" style="border-top: 1px solid #1E2328;"></div>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_customer_add' %}">Add Users</a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Schedule &raquo;</a>
+                            <ul class="dropdown-menu dropdown-submenu" style="background-color: #3b3f46; right: auto;left: -100%;">
+                                <li><a class="dropdown-item" href="{% url 'admin:tabChecker_show_changelist' %}">View
+                                    Schedule</a></li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'tabChecker:logout' %}">
+                        <span class="clearfix d-none d-sm-inline-block"> Logout </span>
+                    </a>
+                </li>
+
+
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'tabChecker:login' %}">
+                        <span class="clearfix d-none d-sm-inline-block"> Login </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-effect" href="{% url 'tabChecker:register' %}">
+                        <span class="clearfix d-none d-sm-inline-block"> Signup </span>
+                    </a>
+                </li>
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+</nav>
+<!-- Navbar -->

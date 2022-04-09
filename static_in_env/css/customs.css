@@ -1,0 +1,417 @@
+.bg-primary {
+    background-color: #f5b301 !important;
+}
+
+.bg-darkest {
+    background-color: #6b6e70;
+}
+
+.bg-darker {
+    background-color: #222629 !important;
+}
+
+.bg-dark {
+    background-color: #474b4f !important;
+}
+
+.primary-text {
+    color: #f5b301;
+}
+
+a strong.primary-text:hover {
+    color: #fed053;
+}
+
+a.nav-link span:hover {
+    color: #fed053;
+}
+
+a.primary-text:hover {
+    color: #fed053;
+}
+
+.secondary-text {
+    color: #fed053;
+}
+
+.tertiary-text {
+    color: #F5A302;
+}
+
+.form-control {
+    color: #000 !important;
+    border-bottom: 1px solid #000 !important;
+}
+
+.form-control::placeholder {
+    color: #000000 !important;
+}
+
+.md-form .form-control::placeholder {
+    color: #000000 !important;
+}
+
+.md-form input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #fed053;
+    box-shadow: 0 1px 0 0 #fed053;
+}
+a:hover {color: #fed053;}
+
+.form-control:focus {
+    border-color: #f5b301 !important;
+}
+
+.pagination.pg-blue .page-item.active .page-link, .pagination.pg-blue .page-item.active .page-link:hover {
+    background-color: #fed053;
+    color: #000 !important;
+}
+
+.pagination .page-item .page-link:hover {
+    color: #000 !important;
+    background-color: #fed053;
+}
+
+.pagination.pg-blue .page-item.active .page-link {
+    background-color: #f5b301;
+    color: #000 !important;
+}
+
+.pagination .page-item .page-link {
+    color: #9e9e9e !important;
+}
+
+.fit-content {
+    width: fit-content !important;
+}
+
+a {
+    color: #F5A302 !important;
+}
+
+a:hover {
+    color: #f5b301 !important;
+}
+
+.btn-primary {
+    background-color: #86c232 !important;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 18px;
+    font-size: 14px;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    background-color: #61892f !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-tertiary {
+    background-color: #F5A302 !important;
+}
+
+.btn-tertiary:hover {
+    background-color: #f5b301 !important;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-tertiary-border {
+    background-color: transparent !important;
+    border: 2px solid #F5A302;
+    border-radius: 25px;
+    color: white;
+}
+
+.btn-tertiary-border:hover {
+    background-color: transparent !important;
+    border: 2px solid #f5b301;
+    box-shadow: 0px 0px 20px rgba(245, 179, 1, 0.4) inset;
+    border-radius: 25px;
+    color: white;
+}
+
+.black-nav {
+    color: black !important;
+    border: 1px solid transparent;
+}
+
+.black-nav:hover {
+    color: white !important;
+    background-color: #fed053 !important;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    overflow: hidden;
+}
+
+ul.navbar-nav li.active {
+    background-color: #fed053 !important;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    overflow: hidden;
+}
+
+.form-control::placeholder {
+    color: #A9A9AC !important;
+}
+
+.alert-error {
+    background-color: #ff6961 !important;
+}
+
+.mt-6 {
+    margin-top: 5rem !important;
+}
+
+.dropdown-item:hover {
+    background-color: #3b3f46 !important;
+    color: #fed053 !important;
+}
+
+.btn-danger:hover {
+    background-color: #ff4f5e !important;
+}
+
+.spinbox {
+    width: 25% !important;
+    background-color: #3b3f46!important;
+    border: none!important;
+}
+
+.dropdown-menu li {
+  position: relative;
+}
+.dropdown-menu .dropdown-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -7px;
+}
+.dropdown-menu .dropdown-submenu-left {
+  right: 100%;
+  left: auto;
+}
+.dropdown-menu > li:hover > .dropdown-submenu {
+  display: block;
+}
+
+.yo:hover {
+    color: white !important;
+}
+
+button.bg-primary:hover {
+    background-color: #fed053 !important;
+}
+
+.nav-selected {
+    background-color: #fed053 !important;
+    border-radius: 15% !important;
+}
+
+.nofocus {
+    border: none !important;
+}
+
+.nofocus:focus {
+    outline: none !important;
+}
+
+.text-primary {
+    color: #f5b301 !important;
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
+* {
+    margin:0;
+    padding:0
+}
+a,a:hover{
+  text-decoration: none;
+}
+.loginForm-area{
+  overflow: hidden;
+  padding: 60px 0;
+  background: #444444;
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.loginForm-area .form-area{
+  position: relative;
+  background: rgba(103,58,183,0.7);
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  box-shadow: 0 0 40px 0 #e1e1e1;
+}
+
+.loginForm-area .form-area .form-content,
+.loginForm-area .form-area .form-input{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.loginForm-area .form-area .form-content{
+  width: 50%;
+  padding: 40px 30px;
+}
+
+.loginForm-area .form-area .form-content h2{
+  color: #fff;
+}
+.loginForm-area .form-area .form-content p{
+  color: #fff;
+}
+.loginForm-area .form-area .form-content ul{
+  margin-top: 50px;
+}
+
+.loginForm-area .form-area .form-content ul li{
+  display: inline-block;
+  margin-right: 10px;
+}
+.loginForm-area .form-area .form-content a i{
+    margin-right: 10px;
+}
+
+.loginForm-area .form-area .form-content .facebook{
+  display: block;
+  padding: 10px 20px;
+  background: #3B579D;
+  color: #fff;
+  font-size: 15px;
+  text-transform: capitalize;
+  border-radius: 4px;
+  border: 1px solid #3B579D;
+  -webkit-transition: all .5s;
+  -o-transition: all .5s;
+  transition: all .5s;
+}
+
+.loginForm-area .form-area .form-content .facebook:hover,
+.loginForm-area .form-area .form-content .facebook:focus{
+    background: transparent;
+}
+
+.loginForm-area .form-area .form-content .twitter{
+  display: block;
+   padding: 10px 20px;
+   background: #00ACED;
+   color: #fff;
+   font-size: 15px;
+   text-transform: capitalize;
+   border-radius: 4px;
+   border: 1px solid #00ACED;
+   -webkit-transition: all .5s;
+   -o-transition: all .5s;
+   transition: all .5s;
+}
+
+.loginForm-area .form-area .form-content .twitter:hover,
+.loginForm-area .form-area .form-content .twitter:focus{
+    background: transparent;
+}
+.loginForm-area .form-area .form-input{
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 40px 0 #e1e1e1;
+}
+.loginForm-area .form-area .form-input{
+    width: 50%;
+    background: #fff;
+    padding: 40px 30px;
+}
+
+.loginForm-area .form-area .form-input h2{
+  margin-bottom: 20px;
+    color: #07315B;
+}
+
+.loginForm-area .form-area .form-input input{
+    position: relative;
+    height: 60px;
+    padding: 20px 0;
+}
+.loginForm-area .form-area .form-input textarea{
+    height: 120px;
+    padding: 20px 0;
+}
+
+.loginForm-area .form-area .form-input input,
+.loginForm-area .form-area .form-input textarea{
+    text-transform: capitalize;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #e1e1e1;
+    color: #07315B;
+}
+.loginForm-area .form-area .form-input form .form-group{
+    position: relative;
+}
+.loginForm-area .form-area .form-input form .form-group label{
+    position: absolute;
+    text-transform: capitalize;
+    top: 20px;
+    left: 0;
+    pointer-events: none;
+    font-size: 14px;
+    color: #595959;
+    margin-bottom: 0;
+    transition: all .6s;
+}
+.loginForm-area .form-area .form-input input:focus ~ label,
+.loginForm-area .form-area .form-input textarea:focus ~ label,
+.loginForm-area .form-area .form-input input:valid ~ label,
+.loginForm-area .form-area .form-input textarea:valid ~ label{
+    top: -5px;
+    opacity: 0;
+    left: 0;
+    color: rgba(103,58,183);
+    font-size: 12px;
+    color: #07315B;
+    font-weight: bold;
+}
+.loginForm-area .form-area .form-input input:focus,
+.loginForm-area .form-area .form-input textarea:focus,
+.loginForm-area .form-area .form-input input:valid,
+.loginForm-area .form-area .form-input textarea:valid{
+    border-bottom: 2px solid rgba(103,58,183);
+}
+.loginForm-area .form-area .form-text{
+    margin-top: 30px;
+}
+.loginForm-area .form-area .form-text span a{
+    color: rgba(103,58,183);
+}
+.loginForm-area .form-area .loginForm-button{
+    margin-top: 30px;
+}
+.loginForm-area .form-area .loginForm-button .loginForm-btn{
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    background: rgba(103,58,183);
+    border: none;
+    border-radius: 50px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
+}
+.loginForm-area .form-area .loginForm-button .loginForm-btn:hover{
+    background: #07315B;
+}

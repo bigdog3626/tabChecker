@@ -34,6 +34,23 @@ class UserAdminConfig(UserAdmin):
                     'is_active', 'is_staff')
     ordering = ('email',)
 
+    fieldsets = (
+        (None, {'fields': ('email', 'first_name', 'last_name', 'address')}),
+        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+    )
+
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': (
+                'email', 'first_name', 'last_name', 'password1', 'is_active', 'is_staff')}
+
+         ),
+
+        ('Permissions', {'fields':('groups',)}),
+
+    )
+
 
 def getOrgIds(qs):
     orgIds = []
@@ -137,8 +154,9 @@ def generateAndPushQR(self, request, queryset):
                 temp += f'{Organization.objects.get(pk=org)}'
             else:
                 temp += f'{Organization.objects.get(pk=org)} and '
+        return temp
 
-    eventTitle = f' {getOrgs()} {queryset.get().title} at {queryset.get().location.name}'
+    eventTitle = f'{getOrgs()} {queryset.get().title} at {queryset.get().location.name}'
     print(eventTitle)
     print('\n\n\n\n\n')
     print(MemberEmails)
@@ -168,8 +186,8 @@ def generateAndPushQR(self, request, queryset):
         email.attach_file(f'{barName}_QR.png')
 
         print(email)
-
-        print('sent')
+        if email.send():
+            print('sent')
 
 
 class BarAdmin(admin.ModelAdmin):
