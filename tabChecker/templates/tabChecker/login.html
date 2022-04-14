@@ -1,49 +1,25 @@
-{% extends 'tabChecker/header.html' %}
-{% load crispy_forms_filters %}
+{% extends "tabChecker/header.html" %} {% load crispy_forms_filters %} 
+{% block content %} {% load crispy_forms_tags %}
 
-{% block content %}
+<!--Login-->
 
-    {% load crispy_forms_tags %}
-
-    <!--Login-->
-    <div class="container py-5">
-        <section class="loginForm-area">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="form-area login-form">
-                            <div class="form-content">
-                                <h2>Login</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla non aperiam cum quas
-                                    quod reprehenderit.</p>
-                                <ul>
-                                    <li><a href="#" class="facebook"><i
-                                            class="fa fa-facebook-f"></i><span class="font-color: white">facebook</span></a></li>
-                                    <li><a href="#" class="twitter"><i
-                                            class="fa fa-twitter"></i><span class="font-color: white">twitter</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="form-input">
-                                <h2>Login Form</h2>
-                                <form>
-                                    <div class="form-group">
-                                        {% csrf_token %}
-                                        {{ login_form }}
-
-                                    </div>
-
-                                    <div class="loginForm-button">
-                                        <button class="loginForm-btn">Login</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="container py-5">
+  <div class="login-form container py-5">
+    <div class="overlap-group3">
+      <h1 class="title">TabChecker</h1>
+      <div class="hospitality-south-presents">Hospitality South Presents:</div>
+    </div>
+    <div class="overlap-group2">
+      <div class="form-stuff">
+        <div class="form-group">{% csrf_token %} {{ login_form.username }}</div>
+        <div class="form-group">{{ login_form.password }}</div>
+      </div>
     </div>
 
-{% endblock %}
+    <div class="login-rectangle">
+      <button class="login-button">Login</button>
+    </div>
+  </div>
+</div>
 
-
+{% endblock content %}

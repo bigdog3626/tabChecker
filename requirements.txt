@@ -30,3 +30,6 @@ openpyxl
 django-import-export
 tablib
 django-livereload-server
+django-phonenumber-field[phonenumbers]
+qrcode
+requests
