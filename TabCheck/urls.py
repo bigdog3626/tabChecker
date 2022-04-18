@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
-    path('tabChecker/', include('tabChecker.urls', namespace='tabChecker')),
+    path('', include('tabChecker.urls')),
 
 ]
 if settings.DEBUG:

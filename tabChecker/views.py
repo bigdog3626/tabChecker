@@ -11,6 +11,7 @@ from django.contrib.auth import login, authenticate  # add this
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomAuthenticationForm
+from django.views.generic.base import TemplateView
 
 
 
@@ -103,3 +104,8 @@ def login_request(request):
             messages.error(request, "Invalid username or password.")
     form = CustomAuthenticationForm
     return render(request=request, template_name="tabChecker/login.html", context={"login_form": form})
+
+
+class HomePageView(TemplateView):
+    template_name='tabChecker/home.html'
+    pass

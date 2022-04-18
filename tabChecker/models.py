@@ -1,6 +1,8 @@
+from ast import Add
 from datetime import datetime
 
 from django.db import models
+from numpy import maximum
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
@@ -125,3 +127,20 @@ class MemberSheetUpload(models.Model):
     description = models.CharField(max_length=200, null=True)
     document = models.FileField(upload_to='upload/', )
     uploaded_at = models.DateField(auto_now_add=True)
+
+
+class PaymentInformation(models.Model):
+    ccv = models.CharField(max_length=3)
+    expirationDate = models.DateField()
+    pass
+
+class AddressInformation(models.Model):
+    pass
+
+class Customer(User):
+    pass
+
+class Ticket(models.Model):
+    eventID = models.ForeignKey(event, on_delete=models.CASCADE)
+    used = models.BooleanField(default=False)
+    user = models.ForeignKey(Customer, on_delete=models.CASCADE)
