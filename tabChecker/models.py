@@ -113,7 +113,7 @@ class Members(models.Model):
         return f'{self.first_name} {self.last_name}'
 
 
-class event(models.Model):
+class Event(models.Model):
     title = models.CharField(max_length=50)
     AttendingOrgs = models.ManyToManyField(Organization)
     location = models.ForeignKey(bar, on_delete=models.CASCADE)

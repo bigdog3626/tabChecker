@@ -2,7 +2,7 @@ from .models import *
 from PIL import Image
 import qrcode
 from django.forms import formset_factory
-from .forms import EventForm, MemberSheetUploadForm
+from .forms import MemberSheetUploadForm, CreateEventForm
 import qrcode
 from PIL import Image
 from django.forms import formset_factory
@@ -12,6 +12,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomAuthenticationForm
 from django.views.generic.base import TemplateView
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 
@@ -109,3 +110,13 @@ def login_request(request):
 class HomePageView(TemplateView):
     template_name='tabChecker/home.html'
     pass
+
+@staff_member_required
+def CreateEvent(request): 
+    if request.method=="POST":
+        f = CreateEventForm
+        if f.is_valid():
+            f.save(commit=False)
+
+
+
