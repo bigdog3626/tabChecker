@@ -1,11 +1,7 @@
-from .models import *
+from django.http import HttpResponseRedirect
 from PIL import Image
 import qrcode
-from django.forms import formset_factory
 from .forms import MemberSheetUploadForm, CreateEventForm
-import qrcode
-from PIL import Image
-from django.forms import formset_factory
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate  # add this
 from django.contrib import messages
@@ -13,10 +9,12 @@ from django.contrib.auth.forms import AuthenticationForm
 from .forms import CustomAuthenticationForm
 from django.views.generic.base import TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
+import stripe
 
 
 
-from .forms import EventForm, MemberSheetUploadForm
+from .forms import CreateEventForm, MemberSheetUploadForm
+
 from .models import *
 
 
@@ -50,18 +48,6 @@ def QRmaker(queryset):
     return QRimg
 
 
-def manage_events(request):
-    EventFormSet = formset_factory(EventForm)
-    if request.method == 'POST':
-        formset = EventFormSet(request.POST, request.FILES)
-        if formset.is_valid():
-            # do something with the formset.cleaned_data
-            for form in formset:
-                form.save()
-            pass
-    else:
-        formset = EventFormSet()
-    return render(request, 'tabChecker/manage_events.html', {'formset': formset})
 
 
 def model_form_upload(request):
@@ -111,12 +97,16 @@ class HomePageView(TemplateView):
     template_name='tabChecker/home.html'
     pass
 
-@staff_member_required
-def CreateEvent(request): 
+
+def createEvent(request): 
     if request.method=="POST":
-        f = CreateEventForm
+        f = CreateEventForm(request.POST)
         if f.is_valid():
-            f.save(commit=False)
+            return HttpResponseRedirect('tabChecker/login.html')
+    else:
+        f = CreateEventForm
+    return render(request, 'tabChecker/createEvent.html', {'f' : f })
 
-
-
+class manageVenue(TemplateView):
+    template_name='tabChecker/manageVenue.html'
+    pass

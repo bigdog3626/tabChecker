@@ -1,25 +1,37 @@
-{% extends "tabChecker/header.html" %} {% load crispy_forms_filters %} 
+{% extends "tabChecker/header.html" %} {% load crispy_forms_filters %}
 {% block content %} {% load crispy_forms_tags %}
 
 <!--Login-->
 
-<div class="container py-5">
-  <div class="login-form container py-5">
-    <div class="overlap-group3">
-      <h1 class="title">TabChecker</h1>
-      <div class="hospitality-south-presents">Hospitality South Presents:</div>
-    </div>
-    <div class="overlap-group2">
-      <div class="form-stuff">
-        <div class="form-group">{% csrf_token %} {{ login_form.username }}</div>
-        <div class="form-group">{{ login_form.password }}</div>
-      </div>
+<div class="container mx-auto w-[700px] mt-20">
+  <div class="login-form grid-cols-1 place-content-evenly border-[1px] border-gray1 bg-bg3 rounded-md p-10">
+    <div class="grid-cols-1 place-content-center py-3 text-center pb-10">
+
+      <h3 class="hospitality-south-presents pb-1">Hospitality South Presents:</h2>
+      <h1 class="text-stone-300 font-weight-bold">TabChecker</h1>
     </div>
 
-    <div class="login-rectangle">
-      <button class="login-button">Login</button>
+    <div class="form-stuff grid grid-cols-1 place-content-evenly pb-5">
+      {% csrf_token %}
+      <p class="py-4 bg-none mx-10">
+        <input type="email" name="username" class="form-input w-full" placeholder="Email" maxlength="254" required
+          id="id_username">
+      </p>
+
+
+      <p class="py-4 bg-none mx-10">
+        <input type="password" name="password" class="form-input w-full" placeholder="Password" required id="id_password">
+      </p>
+    </div>
+
+
+
+    <div class="text-center mx-20 pb-10">
+      <button class="px-3 py-2 rounded-full bg-purple mx-20 w-[150px] text-white ">Login</button>
     </div>
   </div>
 </div>
+
+
 
 {% endblock content %}

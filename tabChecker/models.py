@@ -1,5 +1,5 @@
 from ast import Add
-from datetime import datetime
+import datetime
 
 from django.db import models
 from numpy import maximum
@@ -115,9 +115,11 @@ class Members(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=50)
-    AttendingOrgs = models.ManyToManyField(Organization)
     location = models.ForeignKey(bar, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)
+    price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    endSale = models.DateField(default = datetime.date.today)
+    maxTix = models.IntegerField(null=True)
 
     def __str__(self):
         return f'{self.title} at {self.location}'
@@ -141,6 +143,6 @@ class Customer(User):
     pass
 
 class Ticket(models.Model):
-    eventID = models.ForeignKey(event, on_delete=models.CASCADE)
+    eventID = models.ForeignKey(Event, on_delete=models.CASCADE)
     used = models.BooleanField(default=False)
     user = models.ForeignKey(Customer, on_delete=models.CASCADE)

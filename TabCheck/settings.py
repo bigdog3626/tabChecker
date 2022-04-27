@@ -28,6 +28,9 @@ if os.path.isfile(dotenv_file):
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+STRIPE_PUBLISHABLE_KEY = os.environ['STRIPE_PUBLISHABLE_KEY']
+STRIPE_SECRET_KEY = os.environ['STRIPE_SECRET_KEY']
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -47,12 +50,18 @@ INSTALLED_APPS = [
     'livereload',
     'phonenumber_field',
     'import_export',
+    'djmoney',
     'crispy_forms',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+
     
 
 ]
 
-CRIPSY_TEMPLATE_PACK = 'bootstrap4'
+TAILWIND_APP_NAME = 'theme'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
     'livereload.middleware.LiveReloadScript',
 ]
 
@@ -155,3 +165,7 @@ EMAIL_HOST_PASSWORD = 'dftnbznzadvmauxz'
 
 MEDIA_URL = '/upload/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'upload')
+
+INTERNAL_IPS = {
+    "127.0.0.1"
+}

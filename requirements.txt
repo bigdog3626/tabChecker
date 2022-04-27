@@ -35,3 +35,6 @@ qrcode
 requests
 stripe==2.63.0
 python-dotenv
+django-money
+django-tempus-dominus
+django-tailwind

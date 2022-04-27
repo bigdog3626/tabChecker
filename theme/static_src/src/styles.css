@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.form-input {
+    @apply bg-bg2 border-0 py-4 placeholder:text-gray1 rounded-[1.5rem]
+    hover:border-gray-800 hover:drop-shadow-md focus:placeholder:drop-shadow-sm
+    focus:ring-0 hover:ease-in-out duration-200 text-xl focus:placeholder-transparent focus:border-0
+    xl:lg:text-3xl
+    md:sm:text-4xl
+    
+}
+
+@layer base {
+    html {
+        font-family: Overpass, sans-serif;
+    }
+}
+
+h1  {
+        @apply xl:lg:text-[80px] md:sm:text-[95px] font-bold
+}
+
+h2 {
+    @apply xl:lg:text-[60px] md:sm:text-[70px] font-bold
+
+}
+
+h3 {
+    @apply xl:lg:text-[35px] md:sm:text-[52.5px] font-bold
+}
+
+.pLarge {
+    @apply xl:lg:text-[29px] md:sm:text-[43.5px] 
+}
+
+.pTitle {
+    @apply xl:lg:text-[29px] md:sm:text-[52.5px] font-bold
+}
+
+p {
+    @apply xl:lg:text-[27px] md:sm:text-[40.5px] font-medium
+}
+
+button {
+    @apply xl:lg:text-[25px] md:sm:text-[37.5px] hover:drop-shadow-xl hover:ease-in-out duration-200
+
+
+}
+
+nav {
+    @apply xl:lg:text-[23px] md:sm:text-[34.5px]
+}

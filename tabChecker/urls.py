@@ -1,13 +1,15 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from .views import manage_events, MemberSheetUploadForm, login_request, HomePageView
+from .views import MemberSheetUploadForm, login_request, HomePageView, createEvent, manageVenue
 
 
 
 urlpatterns = [
-    path('manage_events', manage_events, name='manage_events'),
+
     path('model_form_upload', MemberSheetUploadForm, name='upload'),
     path('login/', login_request, name='login'),
-    path('', HomePageView.as_view(), name='home')
+    path('', HomePageView.as_view(), name='home'),
+    path('createEvent', createEvent, name="createEvent"),
+    path('Manage', manageVenue.as_view(), name="manage" )
 
 ]

@@ -1,0 +1,67 @@
+{% extends "tabChecker/header.html" %}
+{% load crispy_forms_filters %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+  <div class="mx-auto" style="width: 500px">
+    <h1 class="w-auto text-center font-weight-bold pb-3">Create Event</h1>
+
+
+    <div class="container px-3 align-content-center">
+      <form action="" method="post" class="row gx-1 gy-5">
+        {% csrf_token %}
+
+
+        <div class="col-6">
+          <div class="p-3">
+            {{ f.title }}
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-3">
+            {{ f.location }}
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-3">
+            <div class="input-group mb-3">
+              <span id="dollarSign" class="input-group-text">$</span>
+              {{f.price}}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="p-3">
+            {{ f.maxTix }}
+            <label class="col-form-label font-small py-0">
+              default = location capacity
+            </label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <dic class="p-3">
+            <div class="endDate">
+              {{ f.endSale }}
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="row gx-3">
+  <div class="col-auto">
+    <button class="btn rounded btn-md text-bold" type="submit" valie="Submit">
+      Submit </button>
+  </div>
+</div>
+
+</div>
+</div>
+
+</div>
+{% endblock content %}

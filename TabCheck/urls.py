@@ -25,6 +25,7 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('', include('tabChecker.urls')),
+    path("__reload__/", include("django_browser_reload.urls"))
 
 ]
 if settings.DEBUG:
