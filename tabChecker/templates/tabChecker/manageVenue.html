@@ -1,15 +1,154 @@
 {% extends 'tabChecker/header.html' %} {% load crispy_forms_filters %}
 {% block content %} {% load crispy_forms_tags %}
 
-<div class="container mx-auto" 
+<div class="container mx-auto w-[100%]">
+    <h1 class="text-left text-bold text-gray1 border-b-2 border-b-gray2 mb-8">
+        Welcome MANAGER...
+    </h1>
+    <div class="grid grid-cols-2 gap-1 place-content-center">
+        <div class="class col-span-2">
+            <section class="text-gray3 body-font rounded-2xl bg-bg2">
+                <div class="container px-5 py-24 mx-auto">
+                    <div class="grid grid-cols-2 gap-md">
+
+                        <div class="mt-auto mb-auto sm:pr-10">
+                            <div class="w-full sm:p-4 px-4 mb-6">
+                                <h1 class="title-font font-medium text-xl mb-2 text-gray1">Moon hashtag pop-up try-hard
+                                    offal truffaut</h1>
+                                <div class="leading-relaxed">Pour-over craft beer pug drinking vinegar live-edge
+                                    gastropub,
+                                    keytar neutra sustainable fingerstache kickstarter.</div>
+                            </div>
+
+                            <div class="grid grid-cols-2 content-center">
+
+                                <div class="grid grid-cols-2">
+                                    <div class="p-4 w-1/3">
+                                        <h2 class="title-font font-medium text-3xl text-gray1 inline-block">184</h2>
+                                        <p class="leading-relaxed">Tickets Sold</p>
+                                    </div>
+                                </div>
 
 
+                                <div>
+                                    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+                                        <h2 class="title-font font-medium text-3xl text-gray1">88%</h2>
+                                        <p class="leading-relaxed">Attendance Percentage</p>
+                                    </div>
+                                </div>
 
 
+                                <div>
+                                    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+                                        <h2 class="title-font font-medium text-3xl text-gray1">$3,500</h2>
+                                        <p class="leading-relaxed">total revenue</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="p-4 sm:w-1/2 lg:w-1/4 w-1/2">
+                                        <h2 class="title-font font-medium text-3xl text-gray1">4</h2>
+                                        <p class="leading-relaxed">Events Created</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container px-3">
+                            <h2> Finalized Events </h2>
+                            <div class="card-content display-none">
+                                <div class="card">
+
+                                    <div class="cardInfo">
+                                        <div class="grid grid-cols-2">
+                                            <div class="col-span-2 pt-16 pb-4">
+                                                <h3>Event Title</h3>
+                                                <p> 02/23/2022 </p>
+                                            </div>
+                                            <div>
+                                                <div id="progress-container">
+                                                    <div>
+                                                        255
+                                                    </div>
+                                                    <span>Tickets Sold</span>
+
+                                                </div>
+
+                                            </div>
 
 
+                                            <h3>sitnky</h3>
+                                            <p>this is my card </p>
+                                        </div>
 
 
+                                    </div>
+                                </div>
+                                <div class="pagination">
+                                    <div class="flex items-center space-x-1">
+                                        <a href="#" class="flex items-center px-4 py-2 text-gray1 bg-purple rounded-md">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                                            </svg>
+                                        </a>
+
+                                        <a href="#"
+                                            class="px-4 py-2 text-gray1 bg-purple rounded-md hover:bg-blue-400 hover:text-white">
+                                            1
+                                        </a>
+                                        <a href="#"
+                                            class="px-4 py-2 text-gray1 bg-purple rounded-md hover:bg-blue-400 hover:text-white">
+                                            2
+                                        </a>
+                                        <a href="#"
+                                            class="px-4 py-2 text-gray1 bg-purple rounded-md hover:bg-blue-400 hover:text-white">
+                                            3
+                                        </a>
+                                        <a href="#"
+                                            class="px-4 py-2 text-gray1 bg-purple rounded-md hover:bg-blue-400 hover:text-white">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                            </svg>
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+<script>
+    const customText = [{
+        text: '%',
+        size: '12px',
+        color: '#000',
+        x: 142,
+        y: 102
+    }];
+
+    const arcProgress = new ArcProgress({
+        el: '#progress-container',
+        progress: .68,
+        speed: 5,
+        value: '5439.92',
+        size: 200,
+        customText,
+        observer(e, t) {
+            console.log('observer the animation', e, t);
+        },
+        animationEnd(e) {
+            console.log('the animation is end', e);
+        }
+    });
+</script>
 
 
 

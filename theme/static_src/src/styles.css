@@ -41,7 +41,7 @@ h3 {
 }
 
 p {
-    @apply xl:lg:text-[27px] md:sm:text-[40.5px] font-medium
+    @apply xl:lg:text-[27px] md:sm:text-[35.5px] font-medium
 }
 
 button {
@@ -52,4 +52,9 @@ button {
 
 nav {
     @apply xl:lg:text-[23px] md:sm:text-[34.5px]
+}
+
+.progressArc {
+    @apply relative inline-block w-[10rem] h-[10rem] m-[1.5rem] border-[1.2rem] border-solid border-purple
+    text-center rounded-[9rem] shadow-md border-b-bgP border-t-bgP border-r-bgP box-border
 }
