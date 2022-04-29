@@ -58,3 +58,49 @@ nav {
     @apply relative inline-block w-[10rem] h-[10rem] m-[1.5rem] border-[1.2rem] border-solid border-purple
     text-center rounded-[9rem] shadow-md border-b-bgP border-t-bgP border-r-bgP box-border
 }
+
+body{
+    
+    --dot-diameter: 150px;
+   
+    --circle-border-width: 3px;
+}
+svg {
+    @apply drop-shadow-md
+  }
+  
+  .circle-container {
+    width: var(--dot-diameter);
+    height: var(--dot-diameter);
+    transform: rotate(-225deg);
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 75 100;
+    stroke-linecap: round;
+  }
+  
+  .circle-container__background {
+    fill: none;
+    stroke: var(--default-color);
+    stroke-width: var(--circle-border-width);
+    stroke-dasharray: 75 100;
+    stroke-linecap: round;
+  }
+  
+  .circle-container__progress {
+    fill: none;
+    stroke-linecap: round;
+    stroke: url(#gradient);
+    stroke-dasharray: 75 100;
+    stroke-linecap: round;
+    stroke-width: var(--circle-border-width);
+    transition: stroke-dashoffset 1s ease-in-out;
+  }
+  
+  .stop1 {
+    stop-color: #e66465;
+  }
+  
+  .stop2 {
+    stop-color: #9198e5;
+  }

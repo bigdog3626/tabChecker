@@ -70,7 +70,8 @@ module.exports = {
                 'l': '10rem',
                 'md': '5rem',
                 'r': '3.75rem',
-                'sm': '2.5rem'
+                'sm': '2.5rem',
+                'xs': '1rem',
             },
         },
     },
