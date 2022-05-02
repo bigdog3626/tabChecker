@@ -21,13 +21,7 @@
 
 }
 
-select {
-    @apply bg-transparent outline-none border-t-0 border-x-0 border-b-2 border-gray1 hover:drop-shadow-md 
-    focus:placeholder:drop-shadow-sm
-    focus:ring-0 focus:border-gray2 focus:ease-out duration-300
-    pb-0 pl-0 ml-2 text-4xl; 
 
-}
 
 @layer base {
     html {
@@ -81,6 +75,15 @@ body{
    
     --circle-border-width: 3px;
 }
+
+#id_date{
+    @apply bg-transparent border-0 pl-1 pb-1
+    border-b-2 border-b-purple border-x-0 outline-none
+    hover:border-gray2 hover:drop-shadow-md focus:placeholder:drop-shadow-sm
+    focus:ring-0 hover:ease-in-out duration-200 focus:placeholder-transparent 
+
+}
+
 svg {
     @apply drop-shadow-md
   }

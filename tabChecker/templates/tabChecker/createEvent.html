@@ -9,32 +9,54 @@
 
     <div class="grid grid-cols-2 grid-rows-4 gap-md bg-bg2 rounded-xl py-xs px-xs">
       <div class="text-4xl">
-        <label for = "title"> Title:</label>
-        <input class="event-input max-w-sm" name="title" id="input" maxlength="50" required>
+
+        {{ f.title | as_crispy_field }}
+
       </div>
 
       <div class="text-4xl">
-        <label for="location"> Location:
 
-          {{ f.location }}
+        {{ f.location | as_crispy_field }}
 
-        </label>
+
+      </div>
+
+      <div class="text-4xl">
+
+
+        {{ f.maxTix | as_crispy_field }}
+
+
+      </div>
+
+      <div class="text-4xl">
+        {{ f.price | as_crispy_field }}
+      </div>
+      <div class="col-span-2">
+        <div class="text-4xl">
+         
+         
+          {{ g.date | as_crispy_field}}
+
+        </div>
+
       </div>
 
 
+
+
+      <div class="col-span-2 items-center text-center">
+        <button class="bg-purple btn rounded btn-xl text-bold w-max px-xl py-1" type="submit" valie="Submit">
+          Submit </button>
+
+      </div>
     </div>
+
+
   </div>
 </div>
 
-<div class="row gx-3">
-  <div class="col-auto">
-    <button class="btn rounded btn-md text-bold" type="submit" valie="Submit">
-      Submit </button>
-  </div>
-</div>
 
-</div>
-</div>
 
-</div>
+
 {% endblock content %}

@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.utils.translation import gettext_lazy as _
 from import_export.forms import ImportForm, ConfirmImportForm
 from django.forms.widgets import PasswordInput, TextInput, Select, NumberInput
+from .widgets import XDSoftDateTimePickerInput
 
 
 
@@ -39,10 +40,18 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 
 class CreateEventForm(ModelForm):
+
     class Meta:
         model = Event
-        fields = ['title', 'location', 'price', 'maxTix', 'endSale']
+        fields = ['title', 'location', 'price', 'maxTix']
         exclude = ['status']
+
+
+class DateForm(forms.Form): 
+    date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%'], 
+        widget=XDSoftDateTimePickerInput()
+    )
 
 
        

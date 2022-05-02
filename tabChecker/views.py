@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from PIL import Image
 import qrcode
-from .forms import MemberSheetUploadForm, CreateEventForm
+from .forms import MemberSheetUploadForm, CreateEventForm, DateForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate  # add this
 from django.contrib import messages
@@ -101,11 +101,13 @@ class HomePageView(TemplateView):
 def createEvent(request): 
     if request.method=="POST":
         f = CreateEventForm(request.POST)
+        g = DateForm(request.POST)
         if f.is_valid():
             return HttpResponseRedirect('tabChecker/login.html')
     else:
         f = CreateEventForm
-    return render(request, 'tabChecker/createEvent.html', {'f' : f })
+        g = DateForm
+    return render(request, 'tabChecker/createEvent.html', {'f' : f , 'g' : g})
 
 class manageVenue(TemplateView):
     template_name='tabChecker/manageVenue.html'
