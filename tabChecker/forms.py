@@ -45,15 +45,6 @@ class CreateEventForm(ModelForm):
         exclude = ['status']
 
 
-        widgets = {
-            'title' : TextInput(attrs={'id' : 'input', 'placeholder' : 'Title'}),
-            'location' : Select (attrs={'id' : 'select', 'placeholder' : 'Select a Location'}),
-            'price' : TextInput(attrs={'id' : 'priceInput', 'placeholder' : 'Ticket Price'}),
-            'maxTix' : NumberInput(attrs={'id': 'input', 'placeholder' : 'Max Tickets'}),
-            'endSale' : SelectDateWidget(empty_label=("Choose Year", "Choose Month", "Choose Day"),),
-
-            
-        }
-
+       
     
 

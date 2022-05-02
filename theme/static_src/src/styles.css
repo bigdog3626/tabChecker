@@ -13,6 +13,22 @@
     
 }
 
+.event-input{
+    @apply bg-transparent outline-none border-t-0 border-x-0 border-b-2 border-gray1 hover:drop-shadow-md 
+    focus:placeholder:drop-shadow-sm
+    focus:ring-0 focus:border-gray2 focus:ease-out duration-300
+    pb-0 pl-0 ml-2 text-4xl;
+
+}
+
+select {
+    @apply bg-transparent outline-none border-t-0 border-x-0 border-b-2 border-gray1 hover:drop-shadow-md 
+    focus:placeholder:drop-shadow-sm
+    focus:ring-0 focus:border-gray2 focus:ease-out duration-300
+    pb-0 pl-0 ml-2 text-4xl; 
+
+}
+
 @layer base {
     html {
         font-family: Overpass, sans-serif;
