@@ -10,6 +10,9 @@ from .forms import CustomAuthenticationForm
 from django.views.generic.base import TemplateView
 from django.contrib.admin.views.decorators import staff_member_required
 import stripe
+from .serializers import EventSerializer
+from rest_framework import generics
+
 
 
 
@@ -112,3 +115,11 @@ def createEvent(request):
 class manageVenue(TemplateView):
     template_name='tabChecker/manageVenue.html'
     pass
+
+
+
+class EventListView(generics.ListCreateAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+

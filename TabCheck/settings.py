@@ -52,15 +52,14 @@ INSTALLED_APPS = [
     'import_export',
     'djmoney',
     'crispy_forms',
-    'tailwind',
-    'theme',
     'django_browser_reload',
+    'rest_framework',
+    'frontend'
 
     
 
 ]
 
-TAILWIND_APP_NAME = 'theme'
 
 
 MIDDLEWARE = [

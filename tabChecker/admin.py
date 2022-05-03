@@ -52,27 +52,8 @@ class UserAdminConfig(UserAdmin):
     )
 
 
-def getOrgIds(qs):
-    orgIds = []
-    for i in range(len(qs)):
-        z = qs[i].get('AttendingOrgs')
-        orgIds.append(z)
 
-    return orgIds
-
-
-def getOrgMembersById(orgIds):
-    qs = []
-    print(orgIds)
-    for i in range(len(orgIds)):
-        filtered = Members.objects.all().filter(organization=orgIds[i])
-        for f in range(len(filtered)):
-            qs.append(filtered[f].id)
-
-    return qs
-
-
-def getEmailNumberByMemberIDs(memIds):
+""" def getEmailNumberByMemberIDs(memIds):
     emails = {}
     for i in range(len(memIds)):
         emails[i] = list(
@@ -83,6 +64,8 @@ def getEmailNumberByMemberIDs(memIds):
     print('\n')
     print(emails)
     return emails
+
+
 
 
 def getPhonesByMemberIDs(memIds):
@@ -188,19 +171,19 @@ def generateAndPushQR(self, request, queryset):
         print(email)
         if email.send():
             print('sent')
-
+"""
 
 class BarAdmin(admin.ModelAdmin):
     list_display = ['name']
 
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ['title', 'location', 'Attending_Orgs']
+    list_display = ['title', 'location']
 
-    def Attending_Orgs(self, obj):
-        return "\n , ".join([p.name for p in obj.AttendingOrgs.all()])
+    #def Attending_Orgs(self, obj):
+    #    return "\n , ".join([p.name for p in obj.AttendingOrgs.all()])
 
-    actions = [generateAndPushQR]
+   # actions = [generateAndPushQR]
 
 
 class CustomMemberAdmin(ImportMixin, admin.ModelAdmin):
